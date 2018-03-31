@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    color: #434344;
+    background-color: #cfd0cf;
+
+    font-family: Arial, sans-serif;
+    font-weight: bolder;
+}
+
+header {
+    margin: 40px 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 42px;
+    line-height: 47px;
+}
+
+div.cells {
+    perspective: 600px;
+}
+
+div.row {
+    margin: 25px;
+
+    text-align: center;
+    white-space: nowrap;
+}
+
+div.row div.cell {
+    display: inline-block;
+    transform-style: preserve-3d;
+
+    width: 130px;
+    height: 130px;
+    border-radius: 9px;
+    margin-right: 25px;
+
+    transition: transform linear 0.2s;
+}
+
+div.row div.cell div {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    border-radius: inherit;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+div.row div.cell div.front {
+    box-sizing: border-box;
+    border: 5px solid white;
+    background: linear-gradient(to top right, #22ab93, #19668d);
+}
+
+div.row div.cell div.back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transform: rotateY(0.5turn);
+
+    background-color: white;
+    font-size: 75px;
+}
+
+div.row div.cell.flipped {
+    transform: rotateY(0.5turn);
+}
+
+div.row div.cell.flipped.success div.back {
+    background-color: #5ad66f;
+}
+
+div.row div.cell.flipped.fail div.back {
+    background-color: #f44336;
+}
+
+div.timer {
+    margin-top: 30px;
+    text-align: center;
+
+    font-size: 32px;
+    line-height: 36px;
+}
+
+dialog {
+    min-width: 350px;
+    padding: 30px 0;
+    border: none;
+
+    text-align: center;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog div.result {
+    font-size: 48px;
+    color: #434344;
+}
+
+dialog button {
+    height: 40px;
+
+    padding: 0 30px;
+    border: none;
+    margin-top: 40px;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+    outline: none;
+
+    font-size: 20px;
+    color: white;
+    background: linear-gradient(to right, #19668d, #22ab93);
+}
+
+dialog button:active {
+    box-shadow: inset 2px 1px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation */
+dialog div.result span {
+    display: inline-block;
+
+    animation: 1s jump ease-out infinite;
+    transform-origin: bottom;
+}
+
+dialog div.result span:nth-of-type(2) {
+    animation-delay: 0.1s;
+}
+
+dialog div.result span:nth-of-type(3) {
+    animation-delay: 0.2s;
+}
+
+dialog div.result span:nth-of-type(4) {
+    animation-delay: 0.3s;
+}
+
+@keyframes jump {
+    40%,
+    50% {
+        transform: scaleY(1.4);
+        animation-timing-function: ease-in-out;
+    }
+
+    90% {
+        transform: scaleY(0.7);
+        animation-timing-function: linear;
+    }
+}
